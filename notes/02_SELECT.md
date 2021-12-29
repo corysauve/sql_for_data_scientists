@@ -3,9 +3,10 @@
 * `SELECT` = SQL code that retrieves data from a database 
 
 ## Some uses 
-    * View data from set of cols in table 
-    * Combine data from multiple tables 
-    * Filter results from above, perform calcs, etc 
+
+* View data from set of cols in table 
+* Combine data from multiple tables 
+* Filter results from above, perform calcs, etc 
     
 ## Fundamental `SELECT` Syntax 
 
@@ -97,7 +98,7 @@ LIMIT 10
     * Will round from the left of the decimal 
     * e.g., `ROUND(1245, -2` = 1200
 
-### Concatenating Strings w/ `CONCATC()`
+### Concatenating Strings w/ `CONCAT()`
 
 ```
 SELECT 
