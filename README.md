@@ -1,18 +1,18 @@
 # sql-for-data-science
 
-My notes from SQL for Data Science 
+My notes from [SQL for Data Scientists](https://sqlfordatascientists.com/) by Renee M.P. Teate
 
 ## Chapter Notes 
 
-[Chapter 1 - Data Sources]() <br>
+[Chapter 1 - Data Sources](notes/01_Data-Sources.md) <br>
 
-[Chapter 2 - The SELECT Statement]() <br>
+[Chapter 2 - The SELECT Statement](notes/02_SELECT.md) <br>
 
-[Chapter 3 - The WHERE Clause]() <br>
+[Chapter 3 - The WHERE Clause](notes/03_WHERE.md) <br>
 
-[Chapter 4 - CASE Statements]() <br>
+[Chapter 4 - CASE Statements](notes/04_CASE.md) <br>
 
-[Chapter 5 - SQL Joins]() <br>
+[Chapter 5 - SQL Joins](notes/05_JOINS.md) <br>
 
 [Chapter 6 - Aggregating Results for Analysis]() <br>
 
