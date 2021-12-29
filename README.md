@@ -1,4 +1,4 @@
-# sql-for-data-science
+# sql-for-data-scientists
 
 My notes from [SQL for Data Scientists](https://sqlfordatascientists.com/) by Renee M.P. Teate
 
