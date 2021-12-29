@@ -62,8 +62,8 @@ LIMIT 5
 
 ```
 SELECT 
-  col_a
-  col_b
+  col_a,
+  col_b,
   col_a * col_b
 FROM schema.tbl 
 LIMIT 10
@@ -73,8 +73,8 @@ Can rename columns using `AS` (`AS` is technically optionally but helps for clar
 
 ```
 SELECT 
-  col_a
-  col_b
+  col_a,
+  col_b,
   col_a * col_b AS the_best_name
 FROM schema.tbl 
 LIMIT 10
@@ -86,8 +86,8 @@ LIMIT 10
 
 ```
 SELECT 
-  col_a
-  col_b
+  col_a,
+  col_b,
   ROUND(col_c * col_a, 2) AS the_best_name
 FROM schema.tbl
 LIMIT 10
@@ -101,8 +101,8 @@ LIMIT 10
 
 ```
 SELECT 
-  col_a
-  col_b
+  col_a,
+  col_b,
   CONCAT(first_name, " ", last_name) AS name 
 FROM schema.tbl 
 ORDER BY last_name, first_name 
