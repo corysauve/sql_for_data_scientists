@@ -116,3 +116,79 @@ WHERE
       )
     LIMIT 5
     ```
+
+## Exercises 
+
+1. Refer to the data in Table 3.1. Write a query that returns all customer purchases 
+of product IDs 4 and 9. 
+
+```
+SELECT * FROM farmers_market.product
+WHERE 
+	product_id = 4
+    OR product_id = 9;
+```
+
+2. Refer to the data in Table 3.1. Write two queries, one using two conditions with 
+an `AND` operator, and one using the BETWEEN operator, that will return all customer purchases 
+made from vendors with vendor IDs between 8 and 10 (inclusive).
+
+```
+SELECT
+	product_id, vendor_id, market_date, 
+    customer_id, quantity, cost_to_customer_per_qty
+FROM farmers_market.customer_purchases
+WHERE 
+	vendor_id >= 8 
+    AND vendor_id <= 10;
+```
+
+```
+SELECT
+	product_id, vendor_id, market_date, 
+    customer_id, quantity, cost_to_customer_per_qty
+FROM farmers_market.customer_purchases
+WHERE 
+	vendor_id BETWEEN 8 and 10;
+```
+
+3. Can you think of two different ways to change the final query in the chapter 
+so that it would return purchases from days when it wasn't raining? 
+
+Change the market_rain_flag from 1 to 0
+
+```
+SELECT 
+	market_date,
+    customer_id, 
+    vendor_id, 
+    quantity * cost_to_customer_per_qty price 
+FROM farmers_market.customer_purchases
+WHERE 
+	market_date IN 
+		(
+        SELECT market_date 
+        FROM farmers_market.market_date_info 
+        WHERE market_rain_flag = 0
+		)
+LIMIT 5;
+```
+
+Change IN to NOT IN 
+
+```
+SELECT 
+	market_date,
+    customer_id, 
+    vendor_id, 
+    quantity * cost_to_customer_per_qty price 
+FROM farmers_market.customer_purchases
+WHERE 
+	market_date NOT IN 
+		(
+        SELECT market_date 
+        FROM farmers_market.market_date_info 
+        WHERE market_rain_flag = 1
+		)
+LIMIT 5;
+```
