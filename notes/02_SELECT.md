@@ -111,3 +111,31 @@ LIMIT 10
 ```
 
 * Can use `UPPER()` and `LOWER` w/ `CONCAT()`
+
+## Exercises 
+
+1. Write a query that returns everything in the customer field.. 
+
+```
+SELECT * FROM customer;
+```
+
+2. Write a query that displays all of the columns and 10 rows from the customer 
+table, sorted by first name. 
+
+```
+SELECT * FROM farmers_market.customer
+ORDER BY customer_first_name 
+LIMIT 10;
+```
+
+3. Write a query that lists all customer IDs and first names in the customer table, 
+sorted by first_name.
+
+```
+SELECT
+  customer_id, 
+  customer_first_name 
+FROM farmers_market.customer
+ORDER BY customer_first_name
+```
