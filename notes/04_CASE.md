@@ -109,3 +109,48 @@ SELECT
   END AS vendor_type_prepared
 FROM farmers_market.vendor
 ```
+
+## Exercises 
+
+1. Products can be sold by the individual unit or by bulk measures like lbs or oz. 
+Write a query that outputs the `product_id` and `product_name` columns from the `product`
+table, and add a column called `prod_qty_types` is "unit", and otherwise displays the word "bulk".
+
+```
+SELECT 
+	product_id,
+    product_name,
+    CASE 
+		WHEN product_qty_type = 'unit'
+			THEN 'unit'
+		ELSE 'bulk'
+	END AS prod_qty_type_condensed
+FROM farmers_market.product;
+```
+
+2. We want to flag all of the different types of pepper products that are sold at 
+the market. Add a column to the previous query called `pepper_flag` that outputs 
+a 1 if the `product_name` contains the word "pepper" (regardless of capitalization), 
+and otherwise outputs 0.
+
+```
+SELECT 
+	product_id,
+    product_name,
+    CASE 
+		WHEN product_qty_type = 'unit'
+			THEN 'unit'
+		ELSE 'bulk'
+	END AS prod_qty_type_condensed, 
+    CASE 
+		WHEN product_name LIKE '%pepper%' 
+			THEN 'pepper'
+        ELSE 'bulk'
+	END AS pepper_flag
+FROM farmers_market.product;
+```
+3. Can you think of a situation when a pepper product might not get flagged as a pepper 
+product using the code from the previous exercise? 
+
+If the type of pepper doesn't have the word 'pepper' in it, such as serrano, jalapeno, etc. Or if the word 
+pepper is just simply replaced with a synonym like 'chile'
