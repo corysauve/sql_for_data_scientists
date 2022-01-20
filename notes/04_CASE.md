@@ -119,8 +119,8 @@ table, and add a column called `prod_qty_types` is "unit", and otherwise display
 ```
 SELECT 
 	product_id,
-    product_name,
-    CASE 
+  product_name,
+  CASE 
 		WHEN product_qty_type = 'unit'
 			THEN 'unit'
 		ELSE 'bulk'
@@ -136,8 +136,8 @@ and otherwise outputs 0.
 ```
 SELECT 
 	product_id,
-    product_name,
-    CASE 
+  product_name,
+  CASE 
 		WHEN product_qty_type = 'unit'
 			THEN 'unit'
 		ELSE 'bulk'
