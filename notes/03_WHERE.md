@@ -136,17 +136,17 @@ made from vendors with vendor IDs between 8 and 10 (inclusive).
 ```
 SELECT
 	product_id, vendor_id, market_date, 
-    customer_id, quantity, cost_to_customer_per_qty
+  customer_id, quantity, cost_to_customer_per_qty
 FROM farmers_market.customer_purchases
 WHERE 
 	vendor_id >= 8 
-    AND vendor_id <= 10;
+  AND vendor_id <= 10;
 ```
 
 ```
 SELECT
 	product_id, vendor_id, market_date, 
-    customer_id, quantity, cost_to_customer_per_qty
+  customer_id, quantity, cost_to_customer_per_qty
 FROM farmers_market.customer_purchases
 WHERE 
 	vendor_id BETWEEN 8 and 10;
@@ -160,16 +160,16 @@ Change the market_rain_flag from 1 to 0
 ```
 SELECT 
 	market_date,
-    customer_id, 
-    vendor_id, 
-    quantity * cost_to_customer_per_qty price 
+  customer_id, 
+  vendor_id, 
+  quantity * cost_to_customer_per_qty price 
 FROM farmers_market.customer_purchases
 WHERE 
 	market_date IN 
 		(
-        SELECT market_date 
-        FROM farmers_market.market_date_info 
-        WHERE market_rain_flag = 0
+      SELECT market_date 
+      FROM farmers_market.market_date_info 
+      WHERE market_rain_flag = 0
 		)
 LIMIT 5;
 ```
@@ -179,16 +179,16 @@ Change IN to NOT IN
 ```
 SELECT 
 	market_date,
-    customer_id, 
-    vendor_id, 
-    quantity * cost_to_customer_per_qty price 
+  customer_id, 
+  vendor_id, 
+  quantity * cost_to_customer_per_qty price 
 FROM farmers_market.customer_purchases
 WHERE 
 	market_date NOT IN 
 		(
-        SELECT market_date 
-        FROM farmers_market.market_date_info 
-        WHERE market_rain_flag = 1
+      SELECT market_date 
+      FROM farmers_market.market_date_info 
+      WHERE market_rain_flag = 1
 		)
 LIMIT 5;
 ```
