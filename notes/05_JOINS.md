@@ -1,4 +1,4 @@
-# Chapter 5 -SQL Joins 
+# Chapter 5 - SQL Joins 
 
 ## `LEFT JOIN`
 
