@@ -106,22 +106,64 @@ LEFT JOIN customer_purchases as cp
 WHERE cp.customer_id > 0
 ```
 
-This may initally appear like the `WHERE` clause 
+* This may initially appear like the `WHERE` clause is selecting all integers above 0. However, the filtering clause is applied to the *right* table. The result of this query omits all customers without purchases. This behavior is making the LEFT JOIN actually behave like a INNER JOIN. 
 
+* If you use a LEFT JOIN to return all rows from the left table, make sure to not filter out any fields from the right table without also allowing NULL results on the right side 1
 
+One solution would be to add an `OR` statement to allow NULL values: 
 
+```
+SELECT * 
+FROM customer AS c
+LEFT JOIN customer_purchases as cp 
+  ON c.customer_id = cp.customer_id
+WHERE cp.customer_id > 0 OR cp.customer_id IS NULL
+```
 
+## JOINs with more than two tables 
 
+* Join booth, vendor_booth_assignments, and vendor together; include all booths 
 
+```
+SELECT 
+  b.booth_number,
+  b.booth_type, 
+  vba.market_date, 
+  v.vendor_id, 
+  v.vendor_name, 
+  v.vendor_type
+FROM booth AS b
+  LEFT JOIN vendor_booth_assignments AS vba ON b.booth_number = vba.booth_number 
+  LEFT JOIN vendor as v on v.vendor_id = vba.vendor_id
+ORDER BY b.booth_number, vba.market_date
+```
 
+## Exercises 
 
+1. Write a query that INNER JOINS the vendor table to the vendor_booth_assignments table on the vendor_id field they both have in common, and sorts the results by vendor_name, then market_date
 
+```
+SELECT * 
+FROM vendor AS v 
+	INNER JOIN vendor_booth_assignments AS vba 
+	  ON v.vendor_id = vba.vendor_id
+ORDER BY v.vendor_name, vba.market_date
+```
 
+2. IS it possible to write a query that produces an output identical to the output of the following query, but using a LEFT JOIN instead of a RIGHT JOIN?
 
+```
+SELECT * 
+FROM customer AS c
+RIGHT JOIN customer_purchases AS cp
+  ON c.customer_id = cp.customer_id
+```
 
+Answer:
 
-
-
-
-
-
+```
+SELECT c.*, cp.* 
+FROM customer_purchases AS cp 
+LEFT JOIN customer AS c 
+	ON cp.customer_id = c.customer_id
+```
