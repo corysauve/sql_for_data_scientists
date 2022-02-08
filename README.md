@@ -14,7 +14,7 @@ My notes from [SQL for Data Scientists](https://sqlfordatascientists.com/) by Re
 
 [Chapter 5 - SQL Joins](notes/05_JOINS.md) <br>
 
-[Chapter 6 - Aggregating Results for Analysis]() <br>
+[Chapter 6 - Aggregating Results for Analysis](notes/06_Aggregating-Results) <br>
 
 [Chapter 7 - Window Functions and Subqueries]() <br>
 
