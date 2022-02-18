@@ -16,7 +16,7 @@ to summarize the query results
 
 Without grouping: 
 
-```
+```sql
 SELECT 
   market_date, 
   customer_id
@@ -26,7 +26,7 @@ ORDER BY market_date, customer_id
 
 With grouping (this returns one row per customer per market date)
 
-```
+```sql
 SELECT 
   market_date, 
   customer_id
@@ -40,7 +40,7 @@ ORDER BY market_date, customer_id
 * Can add aggregate functions (`SUM`, `COUNT`) to return summaries of the customer_purchases 
 date per group 
 
-```
+```sql
 SELECT 
   market_date,
   customer_id, 
@@ -53,7 +53,7 @@ LIMIT 10
 
 * Add quantities 
 
-```
+```sql
 SELECT 
   market_date,
   customer_id, 
@@ -66,7 +66,7 @@ LIMIT 10
 
 * Want to know how many different kinds of items were purchased by each customer 
 
-```
+```sql
 SELECT 
   market_date, 
   customer_id, 
@@ -79,7 +79,7 @@ LIMIT 10
 
 * Combine summaries into single query (summarizes per market date per customer ID)
 
-```
+```sql
 SELECT 
 	market_date, 
   customer_id, 
@@ -95,7 +95,7 @@ LIMIT 10
 
 * Calculated at the row level prior to summarization 
 
-```
+```sql
 SELECT 
 	market_date, 
   customer_id, 
@@ -109,7 +109,7 @@ ORDER BY market_date, vendor_id
 
 * Want to know how much money this customer spent on each market_date, regardless of item or vendor
 
-```
+```sql
 SELECT 
 	market_date, 
   customer_id, 
@@ -123,7 +123,7 @@ ORDER BY market_date
 
 * How much customer had spent at each vendor, regardless of date 
 
-```
+```sql
 SELECT 
 	customer_id,
   vendor_id,
@@ -137,7 +137,7 @@ ORDER BY customer_id, vendor_id
 
 * List of every customer and how much they have ever spent at the market 
 
-```
+```sql
 SELECT 
 	customer_id, 
   sum(quantity * cost_to_customer_per_qty) AS total_spent 
@@ -148,7 +148,7 @@ ORDER BY customer_id
 
 * Can aggregate on joined tables as well 
 
-```
+```sql
 SELECT 
 	c.customer_first_name, 
   c.customer_last_name, 
@@ -167,7 +167,7 @@ ORDER BY cp.customer_id, cp.vendor_id
 
 * Summarize at the level of one row per customer per vendor 
 
-```
+```sql
 SELECT 
 	c.customer_first_name, 
   c.customer_last_name, 
@@ -194,7 +194,7 @@ ORDER BY cp.customer_id, cp.vendor_id
 * Can also filter for a single vendor 
     * Removing the `WHERE` clause would return one row for every customer-vendor pair. 
 
-```
+```sql
 SELECT 
 	c.customer_first_name, 
   c.customer_last_name, 
@@ -222,7 +222,7 @@ ORDER BY cp.customer_id, cp.vendor_id
 
 * Take a look at vendor_inventory table:
 
-```
+```sql
 SELECT * 
 FROM farmers_market.vendor_inventory
 ORDER BY original_price 
@@ -231,7 +231,7 @@ LIMIT 10
 
 * Get the least and most expensive item prices in table 
 
-```
+```sql
 SELECT 
 	MIN(original_price) AS minimum_price,
   MAX(original_price) AS maximum_price
@@ -241,7 +241,7 @@ ORDER BY original_price
 
 * What is the least/most expensive product per product category 
 
-```
+```sql
 SELECT
 	product_category.product_category_name, 
   product.product_category_id,
@@ -260,7 +260,7 @@ GROUP BY product_category.product_category_name, product.product_category_id
 Question = How many products were for sale on each market date, or how many different 
 products each vendor offered?
 
-```
+```sql
 SELECT 
 	market_date,
   COUNT(product_id) AS product_count 
@@ -272,7 +272,7 @@ ORDER BY market_date
 Question = How many different products each vendor brought to market during a date range 
 
 
-```
+```sql
 SELECT 
 	vendor_id,
   COUNT(DISTINCT product_id) AS different_products_offered 
@@ -286,7 +286,7 @@ ORDER BY vendor_id
 
 * What if we want the average original price of the product per vendor 
 
-```
+```sql
 SELECT 
 	vendor_id,
   COUNT(DISTINCT product_id) AS different_products_offered, 
@@ -301,7 +301,7 @@ ORDER BY vendor_id
 multiply the quantity of each type of item by the price of that item. This would occur per row, 
 and then sum that up and divide by the total quantity of items
 
-```
+```sql
 SELECT 
 	vendor_id, 
   COUNT(DISTINCT product_id) AS different_products_offered, 
@@ -322,7 +322,7 @@ to determine the "average item price" (i.e., we're performing operations both be
 
 * Allows you to filter after the aggregation 
 
-```
+```sql
 SELECT 
 	vendor_id, 
   COUNT(DISTINCT product_id) AS different_products_offered, 
@@ -347,7 +347,7 @@ there is duplicated values in either the data or query
 
 Starting JOIN
 
-```
+```sql
 SELECT 
 	cp.market_date, 
   cp.vendor_id, 
@@ -364,7 +364,7 @@ FROM farmers_market.customer_purchases AS cp
 
 Second step 
 
-```
+```sql
 SELECT 
 	cp.market_date, 
   cp.vendor_id, 
@@ -381,7 +381,7 @@ FROM farmers_market.customer_purchases AS cp
 
 Last stop is to add in CASE statements 
 
-```
+```sql
 SELECT 
 	cp.market_date, 
   cp.customer_id, 
@@ -399,7 +399,7 @@ ORDER BY market_date, customer_id
 
 1. Write a query that determines how many times each vendor has rented a booth at the farmer's market (i.e., count the vendor booth assignments per vendor_id)
 
-```
+```sql
 SELECT 
 	vendor_id, 
   COUNT(*)
@@ -410,7 +410,7 @@ ORDER BY vendor_id
 
 2. Write a query that displays the product category name, product_name, earliest date available, and latest date available for every product in "Fresh Fruits & Vegetables".
 
-```
+```sql
 SELECT 
 	pc.product_category_name, 
   p.product_name, 
@@ -426,7 +426,7 @@ WHERE product_category_name = "Fresh Fruits & Vegetables"
 
 3. Everyone who has ever spent more than $50 gets a sticker. Write a query that generates a list of customers, sorted by last name, first name.
 
-```
+```sql
 SELECT
 	c.customer_id,
 	c.customer_first_name, 
