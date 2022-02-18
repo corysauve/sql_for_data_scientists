@@ -427,6 +427,7 @@ WHERE product_category_name = "Fresh Fruits & Vegetables"
 3. Everyone who has ever spent more than $50 gets a sticker. Write a query that generates a list of customers, sorted by last name, first name.
 
 ```
+SELECT
 	c.customer_id,
 	c.customer_first_name, 
   c.customer_last_name,
