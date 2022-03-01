@@ -16,9 +16,9 @@ My notes from [SQL for Data Scientists](https://sqlfordatascientists.com/) by Re
 
 [Chapter 6 - Aggregating Results for Analysis](notes/06_Aggregating-Results.md) <br>
 
-[Chapter 7 - Window Functions and Subqueries]() <br>
+[Chapter 7 - Window Functions and Subqueries](notes/07_Window-Functions-and-Subqueries.md) <br>
 
-[Chapter 8 - Date and Time Functions]() <br>
+[Chapter 8 - Date and Time Functions](notes/08_Date-and-Time-Functions.md) <br>
 
 [Chapter 9 - Exploratory Data Analysis with SQL]() <br>
 
